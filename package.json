@@ -1,0 +1,34 @@
+{
+  "name": "project-sync",
+  "version": "1.0.0",
+  "description": "A simple command line tool for using rsync to push and pull projects to and from a remote server.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/brkstn/project-sync.git"
+  },
+  "keywords": [
+    "rsync",
+    "deploy",
+    "push",
+    "pull",
+    "global",
+    "files",
+    "folders",
+    "directories",
+    "projects",
+    "project",
+    "sync"
+  ],
+  "author": "Steven Klein <steven@brkstn.com>",
+  "license": "MIT",
+  "homepage": "https://bitbucket.org/brkstn/project-sync#readme",
+  "dependencies": {
+    "cli": "^1.0.1",
+    "prompt": "^1.0.0",
+    "rsync": "^0.5.0"
+  }
+}
