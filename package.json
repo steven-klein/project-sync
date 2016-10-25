@@ -27,7 +27,7 @@
     "project",
     "sync"
   ],
-  "author": "Steven Klein <steven.p.klein@gmail.com>",
+  "author": "Steven Klein <steven@brkstn.com>",
   "license": "MIT",
   "homepage": "https://github.com/steven-klein/project-sync/",
   "dependencies": {
