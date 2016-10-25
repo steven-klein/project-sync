@@ -2,6 +2,10 @@
   "name": "project-sync",
   "version": "1.0.0",
   "description": "A simple command line tool for using rsync to push and pull projects to and from a remote server.",
+  "preferGlobal": true,
+  "bin": {
+    "project-sync": "index.js"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
