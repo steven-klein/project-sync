@@ -51,26 +51,26 @@ helper.onErr = function(err) {
 }
 
 /**
- * initializes a new project-sync.json file
+ * initializes a new .projectsync.js file
  * @method function
  * @return {null} will add the file to the current directory
  */
 helper.init = function(){
   //check if file exists
   try {
-    fs.accessSync( './project-sync.json', fs.F_OK);
+    fs.accessSync( './.projectsync.js', fs.F_OK);
 
     //file already exists
-    cli.fatal("project-sync.json already exists.");
+    cli.fatal(".projectsync.js already exists.");
 
   } catch (e) {
     //create file
-    fs.writeFile( './project-sync.json', helper.skeleton(), function(err) {
+    fs.writeFile( './.projectsync.js', helper.skeleton(), function(err) {
         if(err) {
             return cli.fatal(err);
         }
 
-        cli.ok("New project-sync.json started.");
+        cli.ok("New .projectsync.js started.");
         return;
     });
   }
@@ -93,7 +93,7 @@ helper.skeleton = function(){
       }
     },
     "excludeGlobal": [
-      "project-sync.json",
+      ".projectsync.js",
       ".git"
     ]
   }, null, 2);

@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
 /*Require the rsync node library*/
+var path = require('path');
 var cli = require('cli');
 var Rsync = require('rsync');
 var prompt = require('prompt');
@@ -49,7 +50,7 @@ if( syncDirection !== "up" && syncDirection !== "down" ){
 //More error checking, make sure there is a config file
 //in the current directory - .projectsync.js
 //and check if that server is specified in the config file
-fs.readFile('./.projectsync.js', 'utf8', function(err, data){
+fs.readFile(path.resolve(process.cwd(), '.projectsync.js'), 'utf8', function(err, data){
   if(err){
     cli.fatal(
       'Your .projectsync.js file does not exist in the current working directory.\n' +
@@ -57,7 +58,7 @@ fs.readFile('./.projectsync.js', 'utf8', function(err, data){
       err
     );
   }else if (data) {
-    config = require('./.projectsync.js');
+    config = require(path.resolve(process.cwd(), '.projectsync.js'));
     if(
       config.servers[remoteServer] !== undefined &&
       typeof config.servers[remoteServer] === 'object' &&
