@@ -47,26 +47,26 @@ if( syncDirection !== "up" && syncDirection !== "down" ){
 }
 
 //More error checking, make sure there is a config file
-//in the current directory - project-sync.json
+//in the current directory - .projectsync.js
 //and check if that server is specified in the config file
-fs.readFile('./project-sync.json', 'utf8', function(err, data){
+fs.readFile('./.projectsync.js', 'utf8', function(err, data){
   if(err){
     cli.fatal(
-      'Your project-sync.json file does not exist in the current working directory.\n' +
-      'Please make sure your command line is located at the root of your site and that your project-sync.json file exists.\n' +
+      'Your .projectsync.js file does not exist in the current working directory.\n' +
+      'Please make sure your command line is located at the root of your site and that your .projectsync.js file exists.\n' +
       err
     );
   }else if (data) {
-    config = JSON.parse(data);
+    config = require('./.projectsync.js');
     if(
       config.servers[remoteServer] !== undefined &&
       typeof config.servers[remoteServer] === 'object' &&
       helper.Objectsize(config.servers[remoteServer]) > 1
     ){
-      cli.info("project-sync.json file found, preparing rsync.");
+      cli.info(".projectsync.js file found, preparing rsync.");
       doRsync();
     }else{
-      cli.fatal("Remote server named '"+ remoteServer +"' does not exist in your project-sync.json.");
+      cli.fatal("Remote server named '"+ remoteServer +"' does not exist in your .projectsync.js.");
     }
     return false;
   }else {
